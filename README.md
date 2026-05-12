@@ -2,9 +2,9 @@
 
 ## Approach
 
-Project này implement Comeback Bonus bằng C# class library kèm NUnit test. Logic chính nằm trong ComebackBonusController.cs. UI có thể đọc trạng thái từ ComebackBonusStatus.cs và listen event để bind popup.
+Project này implement Comeback Bonus bằng C# class library kèm NUnit test. Logic chính nằm trong ComebackBonusController. UI có thể đọc trạng thái từ ComebackBonusStatus và listen event để bind popup.
 
-Save state nằm trong ComebackBonusSave.cs, gồm các biến initialized, eventActive, completed, currentDayIndex, lastLoginDate, lastKnownDate, lastClaimDate, cooldownUntilDate và claimedDays.
+Save state nằm trong ComebackBonusSave, gồm các biến initialized, eventActive, completed, currentDayIndex, lastLoginDate, lastKnownDate, lastClaimDate, cooldownUntilDate và claimedDays.
 
 Lần đầu player mở game sau khi có feature này, biến initialized đang false nên code chỉ init save, lưu ngày login đầu tiên và không trigger event. Sau đó nếu player vắng đủ 3 ngày lịch thì event unlock ở Day 1. Khi claim thành công, code lưu ngày đã claim, tăng biến currentDayIndex. Nếu claim Day 3 thì đóng event và set cooldown 14 ngày.
 
@@ -34,6 +34,6 @@ Nếu đưa vào production, mình sẽ xử lý inventory full bằng mailbox h
 
 ## Save migration
 
-Hàm Migrate trong ComebackBonusSave.cs xử lý save cũ trước khi controller dùng data. Nếu biến claimedDays bị null hoặc sai size, code tạo mảng mới và copy phần dữ liệu cũ còn hợp lệ. Biến currentDayIndex cũng được clamp lại để không vượt khỏi số ngày reward hiện tại.
+Hàm Migrate trong ComebackBonusSave xử lý save cũ trước khi controller dùng data. Nếu biến claimedDays bị null hoặc sai size, code tạo mảng mới và copy phần dữ liệu cũ còn hợp lệ. Biến currentDayIndex cũng được clamp lại để không vượt khỏi số ngày reward hiện tại.
 
 Nếu sau này thêm field mới, ví dụ claim timestamp chính xác tới giây, mình sẽ tăng save version và set default an toàn trong hàm Migrate. Save cũ vẫn load được, không crash và không làm mất progress đã có.
