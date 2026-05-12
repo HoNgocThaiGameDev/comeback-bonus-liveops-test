@@ -27,6 +27,7 @@ Với chỉnh giờ tới hoặc skip ngày trong chuỗi, Day tiếp theo chỉ
 - Cooldown boundary: trong cooldown không trigger lại; sau cooldown vẫn phải miss đủ ngày mới mở lại.
 - Corrupted old save: biến claimedDays sai size hoặc biến currentDayIndex vượt range sẽ được migrate/clamp an toàn.
 - Rollback recovery: nếu detect chỉnh giờ lùi thì block claim, nhưng khi ngày máy quay lại hợp lệ thì progress cũ vẫn tiếp tục.
+- Fast-forward từng ngày một: local time không phân biệt chắc được player quay lại thật mỗi ngày hay cheat chỉnh ngày từng bước; production nên dùng server timestamp hoặc trusted time để validate claim.
 
 ## Inventory full
 
