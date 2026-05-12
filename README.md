@@ -2,7 +2,7 @@
 
 ## Approach
 
-Project này implement Comeback Bonus bằng C# class library kèm NUnit test. Logic chính nằm trong ComebackBonusController. UI có thể đọc trạng thái từ snapshot ComebackBonusStatus và listen event để bind popup.
+Project này mình implement Comeback Bonus bằng C# class library kèm NUnit test. Logic chính nằm trong ComebackBonusController. UI có thể đọc trạng thái từ snapshot ComebackBonusStatus và listen event để bind popup.
 
 Save state nằm trong ComebackBonusSave, gồm các biến version, initialized, eventActive, completed, currentDayIndex, lastLoginDate, lastKnownDate, lastClaimDate, cooldownUntilDate và claimedDays
 
