@@ -6,6 +6,8 @@ Project này implement Comeback Bonus bằng C# class library kèm NUnit test. L
 
 Save state nằm trong ComebackBonusSave, gồm các biến initialized, eventActive, completed, currentDayIndex, lastLoginDate, lastKnownDate, lastClaimDate, cooldownUntilDate và claimedDays.
 
+Mình có vẽ UML Flow, tên file là UMLFlow.png để hiểu rõ luồng code.
+
 Lần đầu player mở game sau khi có feature này, biến initialized đang false nên code chỉ init save, lưu ngày login đầu tiên và không trigger event. Sau đó nếu player vắng đủ 3 ngày lịch thì event unlock ở Day 1. Khi claim thành công, code lưu ngày đã claim, tăng biến currentDayIndex. Nếu claim Day 3 thì đóng event và set cooldown 14 ngày.
 
 ## Anti-cheat
