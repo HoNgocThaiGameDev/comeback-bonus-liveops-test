@@ -25,7 +25,7 @@ public sealed class ComebackBonusTests
         MockSaveController.Reset();
     }
 
-    // Kiểm tra player lần đầu mở game sau khi có feature thì chỉ init save, không unlock event.
+    // Kiểm tra player lần đầu mở game sau khi có feature thì chỉ init save, không unlock event
     [Test]
     public void FirstTimeUser_DoesNotTriggerComebackBonus()
     {
@@ -39,7 +39,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra player vắng đúng 3 ngày lịch thì Comeback Bonus unlock ở Day 1.
+    // Kiểm tra player vắng đúng 3 ngày lịch thì Comeback Bonus unlock ở Day 1
     [Test]
     public void UserMissesThreeDays_UnlocksDayOne()
     {
@@ -56,7 +56,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra player chỉ vắng 2 ngày thì chưa đủ điều kiện unlock event.
+    // Kiểm tra player chỉ vắng 2 ngày thì chưa đủ điều kiện unlock event
     [Test]
     public void UserMissesTwoDays_DoesNotUnlock()
     {
@@ -72,7 +72,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra claim Day 1 lưu progress đúng và qua ngày mới có thể claim Day 2.
+    // Kiểm tra claim Day 1 lưu progress đúng và qua ngày mới có thể claim Day 2
     [Test]
     public void ClaimDayOne_SavesProgress_ThenNextDayCanClaimDayTwo()
     {
@@ -101,7 +101,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra reset ngày theo mốc 00:00: claim 23:59 thì 00:01 ngày sau claim được Day 2.
+    // Kiểm tra reset ngày theo mốc 00:00: claim 23:59 thì 00:01 ngày sau claim được Day 2
     [Test]
     public void ClaimDayOneAt2359_AfterMidnightCanClaimDayTwo()
     {
@@ -121,7 +121,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra chỉnh giờ tới/skip ngày trong chuỗi không được claim nhanh, chain reset về Day 1.
+    // Kiểm tra chỉnh giờ tới/skip ngày trong chuỗi không được claim nhanh, chain reset về Day 1
     [Test]
     public void ForwardClockSkipDay_DoesNotClaimNextDayAndResetsChain()
     {
@@ -144,7 +144,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra chỉnh giờ lùi vẫn giữ progress đã claim nhưng không cho claim lại.
+    // Kiểm tra chỉnh giờ lùi vẫn giữ progress đã claim nhưng không cho claim lại
     [Test]
     public void RollbackClock_KeepsProgressAndCannotClaimAgain()
     {
@@ -181,7 +181,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra bỏ lỡ ngày giữa chuỗi sau khi claim Day 1 thì event reset về Day 1.
+    // Kiểm tra bỏ lỡ ngày giữa chuỗi sau khi claim Day 1 thì event reset về Day 1
     [Test]
     public void MissMiddleDayAfterClaimingDayOne_ResetsToDayOne()
     {
@@ -203,7 +203,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra claim đủ Day 3 thì event đóng và bắt đầu cooldown 14 ngày.
+    // Kiểm tra claim đủ Day 3 thì event đóng và bắt đầu cooldown 14 ngày
     [Test]
     public void CompleteDayThree_ClosesEventAndStartsFourteenDayCooldown()
     {
@@ -241,7 +241,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra save cũ thiếu field mới vẫn migrate được, không crash và giữ trạng thái hợp lệ.
+    // Kiểm tra save cũ thiếu field mới vẫn migrate được, không crash và giữ trạng thái hợp lệ
     [Test]
     public void OldSaveMissingNewFields_MigratesWithoutCrashing()
     {
@@ -265,7 +265,7 @@ public sealed class ComebackBonusTests
         });
     }
 
-    // Kiểm tra claim thành công bắn event với dayIndex dạng 0-based để hệ thống khác hook vào.
+    // Kiểm tra claim thành công bắn event với dayIndex dạng 0-based để hệ thống khác hook vào
     [Test]
     public void SuccessfulClaim_RaisesClaimedEventWithZeroBasedDayIndex()
     {
